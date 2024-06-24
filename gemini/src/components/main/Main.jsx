@@ -1,8 +1,12 @@
 import React from 'react'
 import "./Main.css"
 import { assets } from "../../assets/assets"
+import { useGemini } from '../../context/Context'
 
 const Main = () => {
+
+  const { onSent, recentPrompt, showResult, loading, resultData, setInput, input } = useGemini();
+
   return (
     <>
 
@@ -47,7 +51,9 @@ const Main = () => {
           <div className="main-bottom">
 
             <div className="search-box">
-              <input type="text" placeholder='Enter a prompt here' />
+              <input
+              onChange={(e) => setInput(e.target.value)}
+              type="text" placeholder='Enter a prompt here' />
 
               <div>
                 <img src={assets.gallery_icon} alt="" />
@@ -57,13 +63,13 @@ const Main = () => {
 
             </div>
             <p className='bottom-info' >
-            Gemini may display inaccurate information, including places, people, history etc. so double check its responses.
-          </p>
+              Gemini may display inaccurate information, including places, people, history etc. so double check its responses.
+            </p>
 
 
           </div>
 
-        
+
 
         </div>
 
