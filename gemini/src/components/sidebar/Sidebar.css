@@ -7,6 +7,7 @@
     padding: 25px 15px;
 }
 
+
 .sidebar img {
     width: 20px;
 }
@@ -45,7 +46,7 @@
     display: flex;
     align-items: start;
     padding: 10px;
-    padding-right: 40px;
+    padding-right: 20px;
     border-radius: 50px;
     color: #282828;
     cursor: pointer;
@@ -58,12 +59,12 @@
     transition: 0.5s ease;
 }
 
-.sidebar .bottom{
+.sidebar .bottom {
     display: flex;
     flex-direction: column;
 }
 
-.sidebar .bottom-item{
+.sidebar .bottom-item {
     padding-right: 10px;
     cursor: pointer;
 }
