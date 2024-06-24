@@ -6,6 +6,10 @@ import { useGemini } from '../../context/Context'
 const Main = () => {
 
   const { onSent, recentPrompt, showResult, loading, resultData, setInput, input } = useGemini();
+  const handleCardClick = (text) => {
+    setInput(text);
+    onSent(text)
+  }
 
   return (
     <>
@@ -13,7 +17,7 @@ const Main = () => {
       <div className='main' >
 
         <div className='nav' >
-          <p>Gemini</p>
+          <a href="/"><p className='heading' >Gemini</p></a>
           <img src={assets.user_icon} alt="" />
         </div>
 
@@ -29,22 +33,31 @@ const Main = () => {
 
               <div className="cards">
 
-                <div className="card">
+                <div className="card"
+                  onClick={() => handleCardClick("Suggest beautiful places to see on an road trip")}
+                >
                   <p>Suggest beautiful places to see on an road trip</p>
                   <img src={assets.compass_icon} alt="" />
                 </div>
 
-                <div className="card">
+                <div className="card"
+                  onClick={() => handleCardClick("Briefly summarize this concept: Urban planning")}
+                >
                   <p>Briefly summarize this concept: Urban planning</p>
                   <img src={assets.bulb_icon} alt="" />
                 </div>
 
-                <div className="card">
+                <div className="card"
+                  onClick={() => handleCardClick("Brainstrom team bonding activities for our work retreat")}
+                >
                   <p>Brainstrom team bonding activities for our work retreat</p>
                   <img src={assets.message_icon} alt="" />
                 </div>
 
-                <div className="card">
+                <div className="card"
+                  onClick={() => handleCardClick("Improve the redeability of the following code")}
+
+                >
                   <p>Improve the redeability of the following code</p>
                   <img src={assets.code_icon} alt="" />
                 </div>
@@ -87,11 +100,15 @@ const Main = () => {
                 type="text" placeholder='Enter a prompt here' />
 
               <div>
-                <img src={assets.gallery_icon} alt="" />
-                <img src={assets.mic_icon} alt="" />
-                <img
-                  onClick={() => onSent()}
-                  src={assets.send_icon} alt="" />
+                <img className='gallery-icon' src={assets.gallery_icon} alt="" />
+                <img className='mic-icon' src={assets.mic_icon} alt="" />
+                {input
+                  &&
+                  <img
+                    className='send-icon'
+                    onClick={() => onSent()}
+                    src={assets.send_icon} alt="" />
+                }
               </div>
 
             </div>
