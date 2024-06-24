@@ -1,11 +1,19 @@
 import React, { useState } from 'react'
 import "./Sidebar.css"
 import { assets } from "../../assets/assets"
+import { useGemini } from '../../context/Context'
 
 
 const Sidebar = () => {
 
-  const [extended, setExtended] = useState(false)
+  const [extended, setExtended] = useState(false);
+  const {onSent,prevPrompt,setRecentPrompt,newChat} = useGemini();
+
+  const loadPrompt = async (prompt) => {
+    setRecentPrompt(prompt);
+    onSent(prompt);
+  }
+
 
   return (
     <>
@@ -16,17 +24,24 @@ const Sidebar = () => {
               onClick={() => setExtended(prev => !prev)}
               className='menu' src={assets.menu_icon} alt="" />
 
-            <div className="new-chat">
+            <div 
+            onClick={() => newChat()}
+            className="new-chat">
               <img src={assets.plus_icon} alt="" />
               {extended && <p>New Chat</p>}
             </div>
 
             <div className="recent">
               <p className="recent-title">Recent</p>
-              <div className="recent-entry">
+              {prevPrompt.map((item,index) => (
+                <div 
+                onClick={() => loadPrompt(item)}
+                className="recent-entry">
                 <img src={assets.message_icon} alt="" />
-                {extended && <p>What is react...</p>}
+                {extended && <p>{item.slice(0,18)}...</p>}
               </div>
+              ))}
+              
             </div>
 
           </div>
