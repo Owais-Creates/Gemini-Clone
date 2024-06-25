@@ -1,13 +1,4 @@
-const apikey = "AIzaSyDZhVdJPTQPVdFtxaDv1N4C2bKb2UI4DHQ";
-
-/*
- * Install the Generative AI SDK
- *
- * $ npm install @google/generative-ai
- *
- * See the getting started guide for more information
- * https://ai.google.dev/gemini-api/docs/get-started/node
- */
+const apikey = "AIzaSyCZM4nTGzljbiKabESWM_xG8H8nQ2Z-kdQ";
 
 import {
     GoogleGenerativeAI,
