@@ -5,10 +5,11 @@ import { useGemini } from '../../context/Context'
 
 const Main = () => {
 
-  const { onSent, recentPrompt, showResult, loading, resultData, setInput, input } = useGemini();
+  const { onSent, recentPrompt, setRecentPrompt, showResult, loading, resultData, setInput, input } = useGemini();
   const handleCardClick = (text) => {
     setInput(text);
     onSent(text)
+    setRecentPrompt(text)
   }
 
   return (
@@ -17,7 +18,7 @@ const Main = () => {
       <div className='main' >
 
         <div className='nav' >
-          <a href="/"><p className='heading' >Gemini</p></a>
+          <a href="/"><p className='heading' >Genieee <img className='geniee_icon' src={assets.geniee_icon} alt="" /> </p></a>
           <img src={assets.user_icon} alt="" />
         </div>
 
@@ -27,7 +28,7 @@ const Main = () => {
             ?
             <>
               <div className="greet">
-                <p><span>Hello, Recruiter</span></p>
+                <p><span>Hello, Master</span></p>
                 <p>How can I help you today?</p>
               </div>
 
@@ -97,7 +98,7 @@ const Main = () => {
               <input
                 onChange={(e) => setInput(e.target.value)}
                 value={input}
-                type="text" placeholder='Enter a prompt' />
+                type="text" placeholder='Ask Genieee...' />
 
               <div>
                 <img className='gallery-icon' src={assets.gallery_icon} alt="" />
